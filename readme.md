@@ -17,10 +17,12 @@ This Python script validates XML files by checking their structure and content. 
 
 
 
-Step	                Command
-Clone repo	            git clone <repo-url> && cd pythonDataValidationScripts
-Create virtual env	    python3 -m venv myenv
-Activate env	        source myenv/bin/activate (Mac/Linux) OR              myenv\Scripts\activate (Windows)
-Install dependencies	pip install -r requirements.txt
-Run script	            python xmlValidation.py
-Deactivate env	        deactivate
+Step                Command
+---------------------------------------------------------------
+Clone repo         git clone <repo-url> && cd pythonDataValidationScripts
+Create virtual env python3 -m venv myenv
+Activate env       source myenv/bin/activate (Mac/Linux) 
+                   myenv\Scripts\activate (Windows)
+Install dependencies pip install -r requirements.txt
+Run script         python xmlValidation.py
+Deactivate env     deactivate
