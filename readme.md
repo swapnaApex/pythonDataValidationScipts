@@ -25,7 +25,7 @@ This Python script validates XML files by checking their structure and content. 
 | Activate env      | source myenv/bin/activate (Mac/Linux)                     |
 |                   | myenv\Scripts\activate (Windows)                          |
 | Install deps      | pip install -r requirements.txt                           |
-| Run script       | python xmlValidation.py                                    |
+| Run script       | python pythonScripts/xmlValidation.py or pytest -s pythonScripts/test_XML_Validation.py                                   |
 | Deactivate env   | deactivate                                                 |
 +---------------------+-----------------------------------------------------------+
 
