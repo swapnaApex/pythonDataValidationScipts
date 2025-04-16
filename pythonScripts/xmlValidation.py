@@ -30,7 +30,7 @@ def validate_xml_from_url(url):
 
 if __name__ == "__main__":
     # Validate both saved XML files
-    validate_xml_file("fixtures/sample1.xml")  # Replace with actual file path
+    validate_xml_file("fixtures/SampleData1.xml")  # Replace with actual file path
     validate_xml_file("fixtures/invalidSample.xml")  # Validate another XML file
 
     # Validate XML from a URL
