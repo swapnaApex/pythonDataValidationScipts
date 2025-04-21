@@ -2,6 +2,14 @@ import os
 import sys
 import xml.etree.ElementTree as ET  # Built-in library to parse and validate XML
 
+def is_well_formed(xml_string: str) -> bool:
+    try:
+        ET.fromstring(xml_string)
+        return True
+    except ET.ParseError as e:
+        print(f"❌ XML is not well-formed: {e}")
+        return False
+
 def validate_xml_file(file_path: str) -> bool:
     """
     Validates whether the given XML file exists and is well-formed.
