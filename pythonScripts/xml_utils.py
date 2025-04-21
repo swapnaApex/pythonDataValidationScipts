@@ -2,45 +2,32 @@ import os
 import sys
 import xml.etree.ElementTree as ET  # Built-in library to parse and validate XML
 
-def is_well_formed(xml_string: str) -> bool:
+def validate_xml(input_data: str) -> bool:
+    """
+    Validates whether the input is a well-formed XML string or a valid XML file path.
+
+    Args:
+        input_data (str): XML content as a string or a path to an XML file.
+
+    Returns:
+        bool: True if the XML is well-formed, False otherwise.
+    """
+    # Check if input is a path to a file
+    if os.path.exists(input_data) and os.path.isfile(input_data):
+        try:
+            with open(input_data, 'r', encoding='utf-8') as f:
+                input_data = f.read()  # Read file contents into string
+        except Exception as e:
+            print(f"❌ Failed to read file: {e}")
+            return False
+
     try:
-        ET.fromstring(xml_string)
+        ET.fromstring(input_data)
         return True
     except ET.ParseError as e:
         print(f"❌ XML is not well-formed: {e}")
         return False
-
-def validate_xml_file(file_path: str) -> bool:
-    """
-    Validates whether the given XML file exists and is well-formed.
     
-    Args:
-        file_path (str): The path to the XML file.
-        
-    Returns:
-        bool: True if the file exists and is valid XML, False otherwise.
-    """
-
-    # Check if the file actually exists on the filesystem
-    if not os.path.exists(file_path):
-        return False
-
-    try:
-        # Open the file and read its contents
-        with open(file_path, 'r') as f:
-            content = f.read()
-
-            # Try to parse the XML string; will raise ET.ParseError if malformed
-            ET.fromstring(content)
-
-        # If no exception is raised, the XML is valid
-        return True
-
-    except ET.ParseError:
-        # Raised when the XML is not well-formed
-        return False
-
-
 # This part only runs when the script is executed directly (not imported)
 def main():
     # Check if exactly one argument (the XML file path) was provided
@@ -52,7 +39,7 @@ def main():
     file_path = sys.argv[1]
 
     # Validate the XML file and print the result
-    if validate_xml_file(file_path):
+    if validate_xml(file_path):
         print("Valid XML.")
     else:
         print("Invalid XML.")

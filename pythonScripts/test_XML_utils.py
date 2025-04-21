@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch, mock_open
-from xml_utils import validate_xml_file  # Adjust the import based on your project structure
+from xml_utils import validate_xml  # Adjust the import based on your project structure
 
 # Use pytest's parametrize decorator to run the test multiple times with different inputs
 @pytest.mark.parametrize(
@@ -32,7 +32,7 @@ def test_validate_xml_file(mock_file, mock_exists, file_path, file_exists, file_
         mock_file.return_value.read.return_value = file_content
 
     # Call the function under test with the mock setup
-    result = validate_xml_file(file_path)
+    result = validate_xml(file_path)
 
     # Assert the result matches the expected outcome
     assert result == expected
