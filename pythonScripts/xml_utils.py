@@ -28,7 +28,6 @@ def validate_xml(input_data: str) -> bool:
         print(f"❌ XML is not well-formed: {e}")
         return False
     
-# This part only runs when the script is executed directly (not imported)
 def main():
     # Check if exactly one argument (the XML file path) was provided
     if len(sys.argv) != 2:

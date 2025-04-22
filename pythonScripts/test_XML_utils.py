@@ -2,7 +2,7 @@ import pytest
 from unittest.mock import patch, mock_open
 from xml_utils import validate_xml  # Adjust the import based on your project structure
 
-# Use pytest's parametrize decorator to run the test multiple times with different inputs
+# To run the test multiple times with different inputs
 @pytest.mark.parametrize(
     "file_path, file_exists, file_content, expected",
     [
