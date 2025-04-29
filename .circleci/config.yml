@@ -18,7 +18,7 @@ jobs:
           command: |
             . venv/bin/activate
             mkdir -p test-results coverage-html
-            pytest --cov=my_package --cov-report=html:coverage-html --junitxml=test-results/results.xml
+            pytest --cov=pythonScripts --cov-report=html:coverage-html --junitxml=test-results/results.xml
       - store_test_results:
           path: test-results
       - store_artifacts:
