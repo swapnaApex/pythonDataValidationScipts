@@ -3,3 +3,5 @@ pytest-html
 requests
 pandas
 openpyxl
+pytest-cov
+
