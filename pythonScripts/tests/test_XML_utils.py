@@ -3,10 +3,7 @@ from unittest.mock import patch, mock_open
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..','src')))
-
 from utils.xml_utils import validate_xml
-
-
 
 # To run the test multiple times with different inputs
 @pytest.mark.parametrize(
