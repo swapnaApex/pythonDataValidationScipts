@@ -1,6 +1,9 @@
 import os
-import sys
-import xml.etree.ElementTree as ET  # Built-in library to parse and validate XML
+import xml.etree.ElementTree as ET
+from utils.logger_utils import setup_logger
+
+# Initialize logger
+logger = setup_logger()
 
 def validate_xml(input_data: str) -> bool:
     """
@@ -17,32 +20,18 @@ def validate_xml(input_data: str) -> bool:
         try:
             with open(input_data, 'r', encoding='utf-8') as f:
                 input_data = f.read()  # Read file contents into string
+            logger.info(f"📄 Successfully read XML file: {input_data[:50]}...")  # Log first 50 chars for debugging
         except Exception as e:
-            print(f"❌ Failed to read file: {e}")
+            logger.error(f"❌ Failed to read file: {e}")
             return False
 
+    # Validate the XML (either string or file content)
     try:
         ET.fromstring(input_data)
+        logger.info("✅ XML is well-formed.")
         return True
     except ET.ParseError as e:
-        print(f"❌ XML is not well-formed: {e}")
+        lineno, column = e.position
+        logger.error(f"❌ XML is not well-formed: {e}")
+        logger.debug(f"👉 Error at line {lineno}, column {column}")
         return False
-    
-def main():
-    # Check if exactly one argument (the XML file path) was provided
-    if len(sys.argv) != 2:
-        print("Usage: python xml_utils.py <file_path>")
-        sys.exit(1)
-
-    # Get the file path from the command-line argument
-    file_path = sys.argv[1]
-
-    # Validate the XML file and print the result
-    if validate_xml(file_path):
-        print("Valid XML.")
-    else:
-        print("Invalid XML.")
-
-# Trigger the main function only when running this script directly
-if __name__ == "__main__":
-    main()
