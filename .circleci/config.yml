@@ -14,7 +14,7 @@ jobs:
             pip install --upgrade pip
             pip install -r requirements.txt
       - run:
-          name: Run pytest with coverage
+          name: Run pytest with coverage and generate reports
           command: |
             . venv/bin/activate
             mkdir -p test-results coverage-html
@@ -27,3 +27,9 @@ jobs:
       - store_artifacts:
           path: coverage-html
           destination: coverage-report
+
+workflows:
+  version: 2
+  test-workflow:
+    jobs:
+      - test
