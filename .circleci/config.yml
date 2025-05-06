@@ -17,16 +17,15 @@ jobs:
           name: Run pytest with coverage and generate reports
           command: |
             . venv/bin/activate
-            mkdir -p test-results coverage-html
-            pytest --cov=pythonScripts --cov-report=html:coverage-html --junitxml=test-results/results.xml
+            pytest
       - store_test_results:
-          path: test-results
+          path: reports
       - store_artifacts:
-          path: test-results
-          destination: test-results
+          path: logs
+          destination: logs
       - store_artifacts:
-          path: coverage-html
-          destination: coverage-report
+          path: reports
+          destination: reports
 
 workflows:
   version: 2
