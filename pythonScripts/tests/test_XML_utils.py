@@ -2,12 +2,12 @@ import pytest
 from unittest.mock import patch, mock_open
 import sys
 import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..','src')))
+
+# Append path for module import
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
 from utils.xml_utils import validate_xml
 
-
-
-# To run the test multiple times with different inputs
+# Parameterized test with different file scenarios
 @pytest.mark.parametrize(
     "file_path, file_exists, file_content, expected",
     [
@@ -21,15 +21,12 @@ from utils.xml_utils import validate_xml
 @patch("os.path.exists")  # Mock os.path.exists to simulate file presence
 @patch("builtins.open", new_callable=mock_open)  # Mock open to simulate file reading
 def test_validate_xml_file(mock_file, mock_exists, file_path, file_exists, file_content, expected):
-    # Mock os.path.exists return value
     mock_exists.return_value = file_exists
-    
-    # If the file is supposed to exist, mock the file's content
+
     if file_exists:
-        mock_file.return_value.read.return_value = file_content  # Mock reading file content
-    
-    # Call the function under test with the mock setup
-    result = validate_xml(file_path)
-    
-    # Assert that the result matches the expected outcome
+        mock_file.return_value.read.return_value = file_content
+
+    # ✅ Explicitly pass file path as source name to help logger
+    result = validate_xml(file_path, source_name=file_path)
+
     assert result == expected
