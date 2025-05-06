@@ -32,6 +32,6 @@ def validate_xml(input_data: str) -> bool:
         return True
     except ET.ParseError as e:
         lineno, column = e.position
-        logger.error(f"❌ XML is not well-formed: {e}")
-        logger.debug(f"👉 Error at line {lineno}, column {column}")
+        logger.error(f"❌ XML is not well-formed: {e.msg}")
+        logger.debug(f"XML Error: {e.msg} at line {lineno}, column {column}")
         return False
