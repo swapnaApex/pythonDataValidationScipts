@@ -20,7 +20,7 @@ def validate_xml(input_data: str) -> bool:
         try:
             with open(input_data, 'r', encoding='utf-8') as f:
                 input_data = f.read()  # Read file contents into string
-            logger.info(f"📄 Successfully read XML file: {input_data[:50]}...")  # Log first 50 chars for debugging
+            logger.info(f"📄 Successfully read XML file: {input_data[:50]}...") 
         except Exception as e:
             logger.error(f"❌ Failed to read file: {e}")
             return False
