@@ -35,7 +35,7 @@ def validate_xml(input_data: str, source_name: str = "input string") -> bool:
         logger.debug(f"XML Error in {source_name} at line {lineno}, column {column}")
         return False
 
-def check_required_elements(xml_str: str, required_elements: List[str], source_name: str = "input string") -> bool:
+def check_required_elements(xml_str: str, required_elements: list[str], source_name: str = "input string") -> bool:
     #function to validate the elements of XML has the specific elements
     try:
         root = ET.fromstring(xml_str)
@@ -56,7 +56,7 @@ def check_required_elements(xml_str: str, required_elements: List[str], source_n
         return False
 
 
-def validate_element_data_types(xml_str: str, element_types: Dict[str, type], source_name: str = "input string") -> bool:
+def validate_element_data_types(xml_str: str, element_types: dict[str, type], source_name: str = "input string") -> bool:
     #function checks whether the XML tag have specific data types as per requirement
     try:
         root = ET.fromstring(xml_str)
