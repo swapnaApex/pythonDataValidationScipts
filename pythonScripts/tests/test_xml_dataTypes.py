@@ -4,7 +4,7 @@ import os
 # Setup path for importing from 'src'
 try:
     sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
-    from utils.xml_utils import validate_xml,check_required_elements, validate_element_data_types
+    from utils.xml_utils import validate_xml, check_required_elements, validate_element_data_types
 except ImportError as e:
     pytest.fail(f"Import failed: {e}")
 
