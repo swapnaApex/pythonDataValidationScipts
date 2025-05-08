@@ -2,6 +2,7 @@ from datetime import datetime
 import logging
 import os
 
+#function defining the logger required to update the logs for debigging and checking the issues in XML validation
 def setup_logger():
     try:
         timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
